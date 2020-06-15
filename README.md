@@ -9,7 +9,11 @@ Emails and passwords are redacted for security reasons.
 Learn and practice C# .NET and WPF.
 
 ## Features
-1. Enter or select from a dropdown menu a recipient
+1. Select a recipient from a dropdown menu
 2. Enter a email subject(optional)
 3. Attach a file(optional)
 4. Enter a email body(optional)
+
+## Use
+1. Change FROM_EMAIL and FROM_PASS to sending email and its password respectively
+2. Change ComboBox emails
