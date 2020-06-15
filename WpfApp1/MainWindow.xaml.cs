@@ -24,7 +24,7 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         private string FROM_EMAIL = "email@gmail.com";
-        private string FROM_PASS = "emailPassword";
+        private string FROM_PASS = "emailPassword123!";
         public MainWindow()
         {
             InitializeComponent();
@@ -50,7 +50,12 @@ namespace WpfApp1
             mail.From = new MailAddress(FROM_EMAIL);
 
             //email recipient
-            string recipient = ((ComboBoxItem)toEmail.SelectedItem).Content.ToString();
+            if (toEmail.Text.Contains("@")==false || toEmail.Text.Contains(".com")==false)
+            {
+                MessageBox.Show("Please enter actual email address");
+                return;
+            }
+            string recipient = toEmail.Text;
             mail.To.Add(recipient);
             //mail.CC.Add(new MailAddress("MyEmailID@gmail.com"));
 
@@ -67,15 +72,9 @@ namespace WpfApp1
             mail.Body = emailContent.Text;
 
             //send email
-            MessageBox.Show("Sending...");
+            MessageBox.Show("Sending...\nPlease close and wait for sent confirmation.");
             SmtpServer.Send(mail);
             MessageBox.Show("Sent");
-        }
-
-        //enable send
-        private void recipientSelected(object sender, SelectionChangedEventArgs e)
-        {
-            sendBtn.IsEnabled = true;
         }
     }
 }
