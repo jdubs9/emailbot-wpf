@@ -41,7 +41,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <TextBox Grid.Column="0" Name="fileName" Margin="10,3,10,0" />
+            <TextBox Grid.Column="0" Name="fileName" Margin="10,3,10,0" IsEnabled="False" />
             <Button Grid.Column="1" Width="80" HorizontalAlignment="Left" Name="btnOpenFile" Click="btnOpenFile_Click">Browse</Button>
         </Grid>
 
