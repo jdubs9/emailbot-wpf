@@ -50,13 +50,16 @@ namespace WpfApp1
             mail.From = new MailAddress(FROM_EMAIL);
 
             //email recipient
-            if (toEmail.Text.Contains("@")==false || toEmail.Text.Contains(".com")==false)
+            string addresses = toEmail.Text;
+            foreach (var address in addresses.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries))
             {
-                MessageBox.Show("Please enter actual email address");
-                return;
+                if (address.Contains("@") == false || address.Contains(".com") == false)
+                {
+                    MessageBox.Show("Please enter actual email address");
+                    return;
+                }
+                mail.To.Add(address);
             }
-            string recipient = toEmail.Text;
-            mail.To.Add(recipient);
             //mail.CC.Add(new MailAddress("MyEmailID@gmail.com"));
 
             //email subject
@@ -72,9 +75,15 @@ namespace WpfApp1
             mail.Body = emailContent.Text;
 
             //send email
-            MessageBox.Show("Sending...\nPlease close and wait for sent confirmation.");
+            MessageBox.Show("Sending...\nPlease close this and wait for sent confirmation.");
             SmtpServer.Send(mail);
             MessageBox.Show("Sent");
+
+            //refresh text boxes
+            toEmail.Text = "";
+            subjectContent.Text = "";
+            fileName.Text = "";
+            emailContent.Text = "\n\nSent from wpf app";
         }
     }
 }
