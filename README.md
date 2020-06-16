@@ -9,7 +9,7 @@ Emails and passwords are redacted for security reasons.
 Learn and practice C# .NET and WPF.
 
 ## Features
-1. Select a recipient from a dropdown menu or enter recipient's address
+1. Select a recipient from a dropdown menu or enter recipients' address (separated by ";" for multiple recipients)
 2. Enter a email subject(optional)
 3. Attach a file(optional)
 4. Enter a email body(optional)
